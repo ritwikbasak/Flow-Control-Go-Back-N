@@ -106,7 +106,7 @@ public class FClient {
 				} else {
 
 					System.out.println();
-					System.out.println("Received CONSIGNMENT " + packetNum + " duplicate - discarding");
+					System.out.println("Received CONSIGNMENT " + packetNum + " OUT OF ORDER - discarding");
 
 				}
 
