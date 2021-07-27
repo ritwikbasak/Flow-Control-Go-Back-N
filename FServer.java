@@ -11,7 +11,7 @@ public class FServer {
 		try {
 
 			final int N = Integer.parseInt(args[2]);
-			if (N < 1 || N > 127) {
+			if (N < 1 || N + 1 > 127) {
 
 				System.out.println("Invalid Window Size...");
 				return;

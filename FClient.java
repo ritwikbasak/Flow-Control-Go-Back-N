@@ -70,26 +70,26 @@ public class FClient {
 				int packetNum = readBuffer[4];
 				int packetLength = receivedPacket.getLength();
 
-				// if last consignment
-				{
-					String endMessage = new String(new byte[] { readBuffer[packetLength - 6],
-							readBuffer[packetLength - 5], readBuffer[packetLength - 4] });
-
-					if (endMessage.equals("END")) {
-
-						end = true;
-
-					}
-				}
-
 				// handle out-of-order packets
 				if (packetNum == expectedPacket) {
+
+					// if last consignment
+					{
+						String endMessage = new String(new byte[] { readBuffer[packetLength - 6],
+								readBuffer[packetLength - 5], readBuffer[packetLength - 4] });
+
+						if (endMessage.equals("END")) {
+
+							end = true;
+
+						}
+					}
 
 					System.out.println();
 					System.out.println("Received CONSIGNMENT " + packetNum);
 
-					System.out.println();
-					System.out.println(new String(readBuffer));
+					// System.out.println();
+					// System.out.println(new String(readBuffer));
 
 					int payloadLength = packetLength - ((end) ? 13 : 9);
 

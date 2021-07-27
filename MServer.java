@@ -102,11 +102,11 @@ public class MServer extends Thread {
 
 				serverSocket.send(sentPacket);
 
-				System.out.println();
-				System.out.println("CLIENT PORT = " + clientPort + "\nFile = " + fileName);
+				// System.out.println();
+				// System.out.println("CLIENT PORT = " + clientPort + "\nFile = " + fileName);
 
-				System.out.println();
-				System.out.println(new String(current));
+				// System.out.println();
+				// System.out.println(new String(current));
 
 			} else {
 
@@ -189,9 +189,9 @@ public class MServer extends Thread {
 							ack = increment(window.peekLast()[4]);
 
 						// Updating highestAck
-						for (int j = highestAck; j != increment(window.peekLast()[4]); j = increment(j))
+						for (int j = highestAck; j != increment(increment(window.peekLast()[4])); j = increment(j))
 							if (j == ack)
-								highestAck = ack;
+								highestAck = j;
 
 					} catch (SocketTimeoutException e) {
 
